@@ -1,0 +1,132 @@
+{
+  "principi_attivi": [
+    {
+      "id": "paracetamolo",
+      "nome": "Paracetamolo",
+      "descrizione": "Farmaco usato principalmente per abbassare la febbre e calmare il dolore.",
+      "categoria_icona": "thermometer_ico",
+      "farmaci_commerciali": [
+        {
+          "id": "tachipirina_gocce",
+          "nome": "Tachipirina",
+          "formato": "Gocce (100 mg/ml)",
+          "icona": "teardrops_ico",
+          "concentrazione": 100,
+          "unita_concentrazione": "mg/ml",
+          "logica_calcolo": "WEIGHT_BASED",
+          "valore_dosaggio": 15,
+          "unita_dosaggio": "mg/kg",
+          "frequenza_ore": 6,
+          "alert": "Non dare più di 4 volte al giorno. Aspettare almeno 4 ore tra una dose e l'altra.",
+          "fonte": "Foglietto illustrativo"
+        },
+        {
+          "id": "efferalgan_sciroppo",
+          "nome": "Efferalgan",
+          "formato": "Sciroppo (30 mg/ml)",
+          "icona": "medical_cross_ico",
+          "concentrazione": 30,
+          "unita_concentrazione": "mg/ml",
+          "logica_calcolo": "WEIGHT_BASED",
+          "valore_dosaggio": 15,
+          "unita_dosaggio": "mg/kg",
+          "frequenza_ore": 6,
+          "alert": "Usare il misurino che si trova nella scatola.",
+          "fonte": "Scatola del farmaco"
+        }
+      ]
+    },
+    {
+      "id": "ibuprofene",
+      "nome": "Ibuprofene",
+      "descrizione": "Serve per dolori e infiammazioni (come il mal di gola o mal di denti).",
+      "categoria_icona": "bug_ico",
+      "farmaci_commerciali": [
+        {
+          "id": "nurofen_sciroppo",
+          "nome": "Nurofen Febbre e Dolore",
+          "formato": "Sospensione orale (20 mg/ml)",
+          "icona": "syringe_ico",
+          "concentrazione": 20,
+          "unita_concentrazione": "mg/ml",
+          "logica_calcolo": "WEIGHT_BASED",
+          "valore_dosaggio": 10,
+          "unita_dosaggio": "mg/kg",
+          "frequenza_ore": 8,
+          "alert": "Meglio prenderlo a stomaco pieno (dopo mangiato).",
+          "fonte": "Bugiardino"
+        }
+      ]
+    },
+    {
+      "id": "betametasone",
+      "nome": "Betametasone",
+      "descrizione": "Un farmaco forte per allergie o infiammazioni pesanti.",
+      "categoria_icona": "heartrate_ico",
+      "farmaci_commerciali": [
+        {
+          "id": "bentelan_compresse",
+          "nome": "Bentelan",
+          "formato": "Compresse che si sciolgono in acqua (0.5 mg)",
+          "icona": "efervescent_ico",
+          "concentrazione": 0.5,
+          "unita_concentrazione": "mg/comp",
+          "logica_calcolo": "BSA_BASED",
+          "valore_dosaggio": 0.2,
+          "unita_dosaggio": "mg/m²",
+          "frequenza_ore": 12,
+          "alert": "Sciogliere bene la pastiglia in un po' d'acqua.",
+          "fonte": "Foglietto illustrativo"
+        }
+      ]
+    },
+    {
+      "id": "amoxicillina",
+      "nome": "Amoxicillina",
+      "descrizione": "Antibiotico usato per curare infezioni batteriche.",
+      "categoria_icona": "virus_ico",
+      "farmaci_commerciali": [
+        {
+          "id": "augmentin_sciroppo",
+          "nome": "Augmentin",
+          "formato": "Polvere da preparare (80 mg/ml)",
+          "icona": "medical_cross_ico",
+          "concentrazione": 80,
+          "unita_concentrazione": "mg/ml",
+          "logica_calcolo": "BRACKETS",
+          "fasce": [
+            { "min_kg": 2, "max_kg": 5, "dose": 2.5, "unita": "ml" },
+            { "min_kg": 5, "max_kg": 10, "dose": 5.0, "unita": "ml" },
+            { "min_kg": 10, "max_kg": 15, "dose": 7.5, "unita": "ml" },
+            { "min_kg": 15, "max_kg": 20, "dose": 10.0, "unita": "ml" }
+          ],
+          "frequenza_ore": 12,
+          "alert": "Va tenuto in frigo dopo aver aggiunto l'acqua. Finire tutta la scatola.",
+          "fonte": "Istruzioni farmacista"
+        }
+      ]
+    },
+    {
+      "id": "vitamina_d",
+      "nome": "Vitamina D",
+      "descrizione": "Integratore per rinforzare le ossa.",
+      "categoria_icona": "flower_ico",
+      "farmaci_commerciali": [
+        {
+          "id": "dibase_gocce",
+          "nome": "Dibase",
+          "formato": "Gocce concentrate",
+          "icona": "teardrops_ico",
+          "concentrazione": 10000,
+          "unita_concentrazione": "UI/ml",
+          "logica_calcolo": "FIXED",
+          "valore_fisso": 400,
+          "unita_valore": "UI",
+          "frequenza_ore": 24,
+          "alert": "Prendere una volta al giorno, magari durante il pranzo.",
+          "fonte": "Consiglio del medico"
+        }
+      ]
+    }
+  ]
+}
