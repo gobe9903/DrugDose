@@ -9,7 +9,40 @@ data class PrincipioAttivo(
     val nome: String,
     val descrizione: String,
     val categoria_icona: String,
+    val regole_dosaggio: List<RegolaDosaggio>,
     val farmaci_commerciali: List<FarmacoCommerciale>
+)
+
+data class RegolaDosaggio(
+    val id: String,
+    val titolo: String,
+    val indicazione: String,
+    val logica_calcolo: String,
+    val formula_placeholder: String,
+    val valore_dosaggio: Double?,
+    val unita_dosaggio: String,
+    val frequenza_ore: Int?,
+    val numero_somministrazioni_max_giornaliere: Int?,
+    val input_richiesti: List<String>,
+    val limiti: Limiti,
+    val alert: List<String>,
+    val note: List<String>,
+    val fonte: Fonte
+)
+
+data class Limiti(
+    val eta_min_anni: Int?,
+    val eta_max_anni: Int?,
+    val peso_min_kg: Double?,
+    val peso_max_kg: Double?,
+    val dose_massima_mg: Double?
+)
+
+data class Fonte(
+    val tipo: String,
+    val titolo: String,
+    val url: String,
+    val note: String
 )
 
 data class FarmacoCommerciale(
@@ -17,24 +50,10 @@ data class FarmacoCommerciale(
     val nome: String,
     val formato: String,
     val icona: String,
-    val concentrazione: Double,
+    val concentrazione: Double?,
     val unita_concentrazione: String,
-    val logica_calcolo: String,
-    val valore_dosaggio: Double? = null,
-    val unita_dosaggio: String? = null,
-    val frequenza_ore: Int,
-    val dose_max_die: Double? = null,
-    val unita_dose_max: String? = null,
-    val alert: String,
-    val fonte: String,
-    val valore_fisso: Double? = null,
-    val unita_valore: String? = null,
-    val fasce: List<Fascia>? = null
-)
-
-data class Fascia(
-    val min_kg: Double,
-    val max_kg: Double,
-    val dose: Double,
-    val unita: String
+    val forma_somministrazione: String,
+    val unita_output_preferita: String,
+    val conversione_placeholder: String,
+    val note_formato: List<String>
 )

@@ -5,20 +5,67 @@
       "nome": "Paracetamolo",
       "descrizione": "Febbre e dolore",
       "categoria_icona": "pill_ico",
+      "regole_dosaggio": [
+        {
+          "id": "paracetamolo_base",
+          "titolo": "Regola base",
+          "indicazione": "Febbre e dolore",
+          "logica_calcolo": "WEIGHT_BASED",
+          "formula_placeholder": "dose_totale_mg = peso_kg * valore_dosaggio",
+          "valore_dosaggio": 15.0,
+          "unita_dosaggio": "mg/kg",
+          "frequenza_ore": 6,
+          "numero_somministrazioni_max_giornaliere": 4,
+          "input_richiesti": ["peso_kg"],
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": null
+          },
+          "alert": [
+            "Non superare 4 somministrazioni al giorno."
+          ],
+          "note": [
+            "Dose teorica da verificare con il formato disponibile."
+          ],
+          "fonte": {
+            "tipo": "PLACEHOLDER",
+            "titolo": "Da definire",
+            "url": "",
+            "note": "Fonte da aggiungere dopo verifica."
+          }
+        }
+      ],
       "farmaci_commerciali": [
+        {
+          "id": "tachipirina_compresse",
+          "nome": "Tachipirina",
+          "formato": "Compresse",
+          "icona": "pill_ico",
+          "concentrazione": 500.0,
+          "unita_concentrazione": "mg/compressa",
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "compresse",
+          "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
+          "note_formato": [
+            "Il risultato finale può essere mostrato sia in mg sia in numero di compresse."
+          ]
+        },
         {
           "id": "tachipirina_gocce",
           "nome": "Tachipirina",
-          "formato": "Gocce (100 mg/ml)",
+          "formato": "Gocce",
           "icona": "teardrops_ico",
-          "concentrazione": 100,
+          "concentrazione": 100.0,
           "unita_concentrazione": "mg/ml",
-          "logica_calcolo": "WEIGHT_BASED",
-          "valore_dosaggio": 15,
-          "unita_dosaggio": "mg/kg",
-          "frequenza_ore": 6,
-          "alert": "Non dare più di 4 volte al giorno.",
-          "fonte": "Foglietto illustrativo"
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "ml",
+          "conversione_placeholder": "ml = dose_totale_mg / concentrazione_mg_ml",
+          "note_formato": [
+            "Il risultato finale può essere mostrato sia in mg sia in ml."
+          ]
         }
       ]
     },
@@ -27,20 +74,67 @@
       "nome": "Ibuprofene",
       "descrizione": "Dolore e infiammazione",
       "categoria_icona": "flat_pill_ico",
+      "regole_dosaggio": [
+        {
+          "id": "ibuprofene_base",
+          "titolo": "Regola base",
+          "indicazione": "Dolore e febbre",
+          "logica_calcolo": "WEIGHT_BASED",
+          "formula_placeholder": "dose_totale_mg = peso_kg * valore_dosaggio",
+          "valore_dosaggio": 10.0,
+          "unita_dosaggio": "mg/kg",
+          "frequenza_ore": 8,
+          "numero_somministrazioni_max_giornaliere": null,
+          "input_richiesti": ["peso_kg"],
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": null
+          },
+          "alert": [
+            "Controllare sempre i limiti prima dell'uso."
+          ],
+          "note": [
+            "Dose teorica da adattare al formato disponibile."
+          ],
+          "fonte": {
+            "tipo": "PLACEHOLDER",
+            "titolo": "Da definire",
+            "url": "",
+            "note": "Fonte da aggiungere dopo verifica."
+          }
+        }
+      ],
       "farmaci_commerciali": [
+        {
+          "id": "nurofen_compresse",
+          "nome": "Nurofen",
+          "formato": "Compresse",
+          "icona": "pill_ico",
+          "concentrazione": 200.0,
+          "unita_concentrazione": "mg/compressa",
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "compresse",
+          "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
+          "note_formato": [
+            "Il risultato finale può essere mostrato sia in mg sia in numero di compresse."
+          ]
+        },
         {
           "id": "nurofen_sciroppo",
           "nome": "Nurofen Febbre e Dolore",
-          "formato": "Sospensione orale (20 mg/ml)",
+          "formato": "Sospensione orale",
           "icona": "syringe_ico",
-          "concentrazione": 20,
+          "concentrazione": 20.0,
           "unita_concentrazione": "mg/ml",
-          "logica_calcolo": "WEIGHT_BASED",
-          "valore_dosaggio": 10,
-          "unita_dosaggio": "mg/kg",
-          "frequenza_ore": 8,
-          "alert": "Meglio prenderlo a stomaco pieno.",
-          "fonte": "Bugiardino"
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "ml",
+          "conversione_placeholder": "ml = dose_totale_mg / concentrazione_mg_ml",
+          "note_formato": [
+            "Il risultato finale può essere mostrato sia in mg sia in ml."
+          ]
         }
       ]
     },
@@ -48,29 +142,271 @@
       "id": "amoxicillina",
       "nome": "Amoxicillina",
       "descrizione": "Infezioni batteriche",
-      "categoria_icona": "medical_cross_ico",
-      "farmaci_commerciali": []
+      "categoria_icona": "efervescent_ico",
+      "regole_dosaggio": [
+        {
+          "id": "amoxicillina_base",
+          "titolo": "Regola da completare",
+          "indicazione": "Da definire",
+          "logica_calcolo": "WEIGHT_BASED",
+          "formula_placeholder": "dose_totale_mg = peso_kg * valore_dosaggio",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "mg/kg",
+          "frequenza_ore": null,
+          "numero_somministrazioni_max_giornaliere": null,
+          "input_richiesti": ["peso_kg"],
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": null
+          },
+          "alert": [],
+          "note": [
+            "Regola non ancora compilata."
+          ],
+          "fonte": {
+            "tipo": "PLACEHOLDER",
+            "titolo": "Da definire",
+            "url": "",
+            "note": "Fonte da aggiungere dopo verifica."
+          }
+        }
+      ],
+      "farmaci_commerciali": [
+        {
+          "id": "amoxicillina_compresse",
+          "nome": "Amoxicillina",
+          "formato": "Compresse",
+          "icona": "pill_ico",
+          "concentrazione": 500.0,
+          "unita_concentrazione": "mg/compressa",
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "compresse",
+          "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
+          "note_formato": [
+            "Formato utile per mostrare la conversione in compresse."
+          ]
+        },
+        {
+          "id": "amoxicillina_sospensione",
+          "nome": "Amoxicillina",
+          "formato": "Sospensione orale",
+          "icona": "syringe_ico",
+          "concentrazione": 50.0,
+          "unita_concentrazione": "mg/ml",
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "ml",
+          "conversione_placeholder": "ml = dose_totale_mg / concentrazione_mg_ml",
+          "note_formato": [
+            "Formato utile per mostrare la conversione in ml."
+          ]
+        }
+      ]
     },
     {
       "id": "ivermectina",
       "nome": "Ivermectina",
       "descrizione": "Trattamento antiparassitario",
       "categoria_icona": "bug_ico",
-      "farmaci_commerciali": []
+      "regole_dosaggio": [
+        {
+          "id": "ivermectina_base",
+          "titolo": "Regola base",
+          "indicazione": "Da definire",
+          "logica_calcolo": "WEIGHT_BASED",
+          "formula_placeholder": "dose_totale_mcg = peso_kg * valore_dosaggio; dose_totale_mg = dose_totale_mcg / 1000",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "mcg/kg",
+          "frequenza_ore": null,
+          "numero_somministrazioni_max_giornaliere": null,
+          "input_richiesti": ["peso_kg"],
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": null
+          },
+          "alert": [
+            "Controllare conversione da microgrammi a milligrammi."
+          ],
+          "note": [
+            "Distinguere tra dose teorica e formato realmente disponibile."
+          ],
+          "fonte": {
+            "tipo": "PLACEHOLDER",
+            "titolo": "Da definire",
+            "url": "",
+            "note": "Fonte da aggiungere dopo verifica."
+          }
+        }
+      ],
+      "farmaci_commerciali": [
+        {
+          "id": "ivermectina_compresse",
+          "nome": "Ivermectina",
+          "formato": "Compresse",
+          "icona": "pill_ico",
+          "concentrazione": 3.0,
+          "unita_concentrazione": "mg/compressa",
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "compresse",
+          "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
+          "note_formato": [
+            "Formato utile per il calcolo in numero di compresse."
+          ]
+        },
+        {
+          "id": "ivermectina_crema",
+          "nome": "Ivermectina",
+          "formato": "Crema",
+          "icona": "cream_ico",
+          "concentrazione": null,
+          "unita_concentrazione": "percentuale_da_definire",
+          "forma_somministrazione": "topica",
+          "unita_output_preferita": "applicazione",
+          "conversione_placeholder": "quantita_topica_da_definire_in_base_al_formato",
+          "note_formato": [
+            "Formato alternativo da usare solo se coerente con la regola scelta."
+          ]
+        }
+      ]
     },
     {
       "id": "cetirizina",
       "nome": "Cetirizina",
       "descrizione": "Allergie",
       "categoria_icona": "flower_ico",
-      "farmaci_commerciali": []
+      "regole_dosaggio": [
+        {
+          "id": "cetirizina_base",
+          "titolo": "Regola da completare",
+          "indicazione": "Allergie",
+          "logica_calcolo": "FIXED_DOSE",
+          "formula_placeholder": "dose_totale = valore_dosaggio",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "mg",
+          "frequenza_ore": null,
+          "numero_somministrazioni_max_giornaliere": null,
+          "input_richiesti": [],
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": null
+          },
+          "alert": [],
+          "note": [
+            "Questa regola può essere cambiata in base alla fonte scelta."
+          ],
+          "fonte": {
+            "tipo": "PLACEHOLDER",
+            "titolo": "Da definire",
+            "url": "",
+            "note": "Fonte da aggiungere dopo verifica."
+          }
+        }
+      ],
+      "farmaci_commerciali": [
+        {
+          "id": "cetirizina_compresse",
+          "nome": "Cetirizina",
+          "formato": "Compresse",
+          "icona": "pill_ico",
+          "concentrazione": 10.0,
+          "unita_concentrazione": "mg/compressa",
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "compresse",
+          "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
+          "note_formato": [
+            "Formato utile per il calcolo in compresse."
+          ]
+        },
+        {
+          "id": "cetirizina_sciroppo",
+          "nome": "Cetirizina",
+          "formato": "Sciroppo",
+          "icona": "syringe_ico",
+          "concentrazione": 1.0,
+          "unita_concentrazione": "mg/ml",
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "ml",
+          "conversione_placeholder": "ml = dose_totale_mg / concentrazione_mg_ml",
+          "note_formato": [
+            "Formato utile per il calcolo in ml."
+          ]
+        }
+      ]
     },
     {
       "id": "aciclovir",
       "nome": "Aciclovir",
       "descrizione": "Infezioni virali",
       "categoria_icona": "virus_ico",
-      "farmaci_commerciali": []
+      "regole_dosaggio": [
+        {
+          "id": "aciclovir_base",
+          "titolo": "Regola da completare",
+          "indicazione": "Da definire",
+          "logica_calcolo": "FIXED_DOSE",
+          "formula_placeholder": "dose_totale = valore_dosaggio",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "mg",
+          "frequenza_ore": null,
+          "numero_somministrazioni_max_giornaliere": null,
+          "input_richiesti": [],
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": null
+          },
+          "alert": [],
+          "note": [
+            "La regola dipenderà dal caso d'uso scelto nel dataset."
+          ],
+          "fonte": {
+            "tipo": "PLACEHOLDER",
+            "titolo": "Da definire",
+            "url": "",
+            "note": "Fonte da aggiungere dopo verifica."
+          }
+        }
+      ],
+      "farmaci_commerciali": [
+        {
+          "id": "aciclovir_compresse",
+          "nome": "Aciclovir",
+          "formato": "Compresse",
+          "icona": "pill_ico",
+          "concentrazione": 400.0,
+          "unita_concentrazione": "mg/compressa",
+          "forma_somministrazione": "orale",
+          "unita_output_preferita": "compresse",
+          "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
+          "note_formato": [
+            "Formato utile per il calcolo in compresse."
+          ]
+        },
+        {
+          "id": "aciclovir_crema",
+          "nome": "Aciclovir",
+          "formato": "Crema",
+          "icona": "cream_ico",
+          "concentrazione": null,
+          "unita_concentrazione": "percentuale_da_definire",
+          "forma_somministrazione": "topica",
+          "unita_output_preferita": "applicazione",
+          "conversione_placeholder": "quantita_topica_da_definire_in_base_al_formato",
+          "note_formato": [
+            "Formato alternativo da usare con regola specifica."
+          ]
+        }
+      ]
     }
   ]
 }
