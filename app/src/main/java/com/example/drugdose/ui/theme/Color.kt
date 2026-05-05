@@ -2,6 +2,11 @@ package com.example.drugdose.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val TealPrimary = Color(0xFF00796B)
+val TealLight = Color(0xFFE0F2F1)
+val TextGray = Color(0xFF757575)
+val BackgroundLight = Color(0xFFF8F9FA)
+
 val Purple80 = Color(0xFFD0BCFF)
 val PurpleGrey80 = Color(0xFFCCC2DC)
 val Pink80 = Color(0xFFEFB8C8)
