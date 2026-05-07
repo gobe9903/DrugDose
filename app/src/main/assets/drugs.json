@@ -7,34 +7,152 @@
       "categoria_icona": "pill_ico",
       "regole_dosaggio": [
         {
-          "id": "paracetamolo_base",
-          "titolo": "Regola base",
+          "id": "paracetamolo_tachipirina_compresse_fasce_peso",
+          "titolo": "Tachipirina compresse 500 mg - dosaggio per fasce di peso",
           "indicazione": "Febbre e dolore",
-          "logica_calcolo": "WEIGHT_BASED",
-          "formula_placeholder": "dose_totale_mg = peso_kg * valore_dosaggio",
-          "valore_dosaggio": 15.0,
-          "unita_dosaggio": "mg/kg",
-          "frequenza_ore": 6,
-          "numero_somministrazioni_max_giornaliere": 4,
+          "logica_calcolo": "WEIGHT_BANDS",
+          "formula_placeholder": "dose_totale_mg = dose_fascia_mg",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "mg",
+          "frequenza_ore": null,
+          "numero_somministrazioni_max_giornaliere": null,
           "input_richiesti": ["peso_kg"],
+          "fasce_peso": [
+            {
+              "peso_min_kg": 21,
+              "peso_max_kg": 25,
+              "eta_indicativa": "6-10 anni",
+              "dose_singola_mg": 250,
+              "dose_singola_unita": 0.5,
+              "unita_output": "compressa",
+              "frequenza_ore": 4,
+              "numero_somministrazioni_max_giornaliere": 6,
+              "dose_massima_giornaliera_mg": 1500
+            },
+            {
+              "peso_min_kg": 26,
+              "peso_max_kg": 40,
+              "eta_indicativa": "8-13 anni",
+              "dose_singola_mg": 500,
+              "dose_singola_unita": 1,
+              "unita_output": "compressa",
+              "frequenza_ore": 6,
+              "numero_somministrazioni_max_giornaliere": 4,
+              "dose_massima_giornaliera_mg": 2000
+            },
+            {
+              "peso_min_kg": 41,
+              "peso_max_kg": 50,
+              "eta_indicativa": "12-15 anni",
+              "dose_singola_mg": 500,
+              "dose_singola_unita": 1,
+              "unita_output": "compressa",
+              "frequenza_ore": 4,
+              "numero_somministrazioni_max_giornaliere": 6,
+              "dose_massima_giornaliera_mg": 3000
+            },
+            {
+              "peso_min_kg": 50,
+              "peso_max_kg": null,
+              "eta_indicativa": "oltre 15 anni/adulti",
+              "dose_singola_mg": 500,
+              "dose_singola_unita": 1,
+              "unita_output": "compressa",
+              "frequenza_ore": 4,
+              "numero_somministrazioni_max_giornaliere": 6,
+              "dose_massima_giornaliera_mg": 3000
+            }
+          ],
           "limiti": {
             "eta_min_anni": null,
             "eta_max_anni": null,
-            "peso_min_kg": null,
+            "peso_min_kg": 21,
             "peso_max_kg": null,
             "dose_massima_mg": null
           },
           "alert": [
-            "Non superare 4 somministrazioni al giorno."
+            "Non usare Tachipirina compresse 500 mg sotto i 21 kg secondo lo schema posologico indicato.",
+            "Non superare il numero massimo di somministrazioni giornaliere previsto per la fascia di peso.",
+            "Negli adulti, in caso di forti dolori o febbre alta, la fonte prevede anche 2 compresse da 500 mg, ma questa opzione dovrebbe essere gestita separatamente."
           ],
           "note": [
-            "Dose teorica da verificare con il formato disponibile."
+            "Regola costruita su fasce di peso, non su formula mg/kg pura.",
+            "Il risultato è espresso in mg e in frazione/numero di compresse."
           ],
           "fonte": {
-            "tipo": "PLACEHOLDER",
-            "titolo": "Da definire",
-            "url": "",
-            "note": "Fonte da aggiungere dopo verifica."
+            "tipo": "AIFA_SCHEMA_POSOLOGICO",
+            "titolo": "Schema posologico Tachipirina - AIFA",
+            "url": "https://www.aifa.gov.it/documents/20142/516919/Schema_posologico_Tachipirina_2013.pdf",
+            "note": "Schema posologico per Tachipirina compresse 500 mg in base al peso corporeo."
+          }
+        },
+        {
+          "id": "paracetamolo_tachipirina_gocce_fasce_peso",
+          "titolo": "Tachipirina gocce 100 mg/ml - dosaggio per fasce di peso",
+          "indicazione": "Febbre e dolore",
+          "logica_calcolo": "WEIGHT_BANDS",
+          "formula_placeholder": "dose_totale_mg = numero_gocce * 3.1",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "mg",
+          "frequenza_ore": null,
+          "numero_somministrazioni_max_giornaliere": null,
+          "input_richiesti": ["peso_kg"],
+          "mg_per_goccia": 3.1,
+          "fasce_peso": [
+            {
+              "peso_min_kg": 3.2,
+              "peso_max_kg": 6,
+              "eta_indicativa": "0-6 mesi circa",
+              "dose_singola_gocce_min": 14,
+              "dose_singola_gocce_max": 20,
+              "dose_singola_mg_min": 43.4,
+              "dose_singola_mg_max": 62,
+              "frequenza_ore": 6,
+              "numero_somministrazioni_max_giornaliere": 4
+            },
+            {
+              "peso_min_kg": 7,
+              "peso_max_kg": 10,
+              "eta_indicativa": "6-18 mesi circa",
+              "dose_singola_gocce_min": 35,
+              "dose_singola_gocce_max": 40,
+              "dose_singola_mg_min": 108.5,
+              "dose_singola_mg_max": 124,
+              "frequenza_ore": 6,
+              "numero_somministrazioni_max_giornaliere": 4
+            },
+            {
+              "peso_min_kg": 11,
+              "peso_max_kg": 12,
+              "eta_indicativa": "18-24 mesi circa",
+              "dose_singola_gocce_min": 35,
+              "dose_singola_gocce_max": 40,
+              "dose_singola_mg_min": 108.5,
+              "dose_singola_mg_max": 124,
+              "frequenza_ore": 4,
+              "numero_somministrazioni_max_giornaliere": 6
+            }
+          ],
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": 3.2,
+            "peso_max_kg": 12,
+            "dose_massima_mg": null
+          },
+          "alert": [
+            "Le gocce sono gestite tramite fasce di peso specifiche.",
+            "1 goccia corrisponde a 3,1 mg di paracetamolo.",
+            "Non superare il numero massimo di somministrazioni giornaliere previsto dalla fascia."
+          ],
+          "note": [
+            "La concentrazione è 100 mg/ml, ma per il calcolo pratico viene usato il valore 3,1 mg/goccia."
+          ],
+          "fonte": {
+            "tipo": "AIFA_SCHEMA_POSOLOGICO",
+            "titolo": "Schema posologico Tachipirina - AIFA",
+            "url": "https://www.aifa.gov.it/documents/20142/516919/Schema_posologico_Tachipirina_2013.pdf",
+            "note": "Schema posologico Tachipirina gocce orali 100 mg/ml; 1 goccia = 3,1 mg."
           }
         }
       ],
@@ -50,7 +168,7 @@
           "unita_output_preferita": "compresse",
           "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
           "note_formato": [
-            "Il risultato finale può essere mostrato sia in mg sia in numero di compresse."
+            "Usare con la regola paracetamolo_tachipirina_compresse_fasce_peso."
           ]
         },
         {
@@ -60,11 +178,12 @@
           "icona": "teardrops_ico",
           "concentrazione": 100.0,
           "unita_concentrazione": "mg/ml",
+          "mg_per_goccia": 3.1,
           "forma_somministrazione": "orale",
-          "unita_output_preferita": "ml",
-          "conversione_placeholder": "ml = dose_totale_mg / concentrazione_mg_ml",
+          "unita_output_preferita": "gocce",
+          "conversione_placeholder": "numero_gocce = dose_totale_mg / 3.1",
           "note_formato": [
-            "Il risultato finale può essere mostrato sia in mg sia in ml."
+            "Usare preferibilmente il numero di gocce previsto dalla fascia di peso."
           ]
         }
       ]
@@ -76,15 +195,57 @@
       "categoria_icona": "flat_pill_ico",
       "regole_dosaggio": [
         {
-          "id": "ibuprofene_base",
-          "titolo": "Regola base",
+          "id": "ibuprofene_nurofen_compresse_200mg",
+          "titolo": "Nurofen compresse 200 mg - dose fissa",
           "indicazione": "Dolore e febbre",
-          "logica_calcolo": "WEIGHT_BASED",
-          "formula_placeholder": "dose_totale_mg = peso_kg * valore_dosaggio",
-          "valore_dosaggio": 10.0,
-          "unita_dosaggio": "mg/kg",
-          "frequenza_ore": 8,
-          "numero_somministrazioni_max_giornaliere": null,
+          "logica_calcolo": "FIXED_DOSE",
+          "formula_placeholder": "dose_totale_mg = numero_compresse * 200",
+          "valore_dosaggio": 200.0,
+          "unita_dosaggio": "mg",
+          "frequenza_ore": 4,
+          "numero_somministrazioni_max_giornaliere": 6,
+          "input_richiesti": ["eta_anni"],
+          "limiti": {
+            "eta_min_anni": 12,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": 1200.0
+          },
+          "dose_singola": {
+            "min_mg": 200,
+            "max_mg": 400,
+            "min_compresse": 1,
+            "max_compresse": 2
+          },
+          "alert": [
+            "Non somministrare ai bambini di età inferiore a 12 anni.",
+            "Non superare 1200 mg al giorno.",
+            "Assumere la dose minima efficace per il minor tempo possibile."
+          ],
+          "note": [
+            "Regola adatta a compresse da 200 mg.",
+            "Il calcolo non è basato sul peso."
+          ],
+          "fonte": {
+            "tipo": "RCP_AIFA",
+            "titolo": "Nurofen 200 mg compresse rivestite - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/3510/farmaci/25634/stampati?ts=RCP",
+            "note": "Posologia adulti e adolescenti oltre i 12 anni; dose massima giornaliera 1200 mg."
+          }
+        },
+        {
+          "id": "ibuprofene_nurofen_sospensione_20mg_ml",
+          "titolo": "Nurofen Febbre e Dolore sospensione orale 100 mg/5 ml",
+          "indicazione": "Dolore e febbre",
+          "logica_calcolo": "WEIGHT_BASED_DAILY",
+          "formula_placeholder": "dose_giornaliera_mg = peso_kg * valore_dosaggio; dose_singola_mg = dose_giornaliera_mg / 3; ml = dose_singola_mg / 20",
+          "valore_dosaggio_min": 20.0,
+          "valore_dosaggio_max": 30.0,
+          "unita_dosaggio": "mg/kg/die",
+          "frequenza_ore": 6,
+          "frequenza_ore_max": 8,
+          "numero_somministrazioni_max_giornaliere": 3,
           "input_richiesti": ["peso_kg"],
           "limiti": {
             "eta_min_anni": null,
@@ -94,16 +255,19 @@
             "dose_massima_mg": null
           },
           "alert": [
-            "Controllare sempre i limiti prima dell'uso."
+            "Dose giornaliera raccomandata: 20-30 mg/kg/die suddivisa in 3 somministrazioni.",
+            "Intervallo tra le somministrazioni: 6-8 ore.",
+            "Controllare età, peso e controindicazioni prima dell'uso."
           ],
           "note": [
-            "Dose teorica da adattare al formato disponibile."
+            "La sospensione è 100 mg/5 ml, cioè 20 mg/ml.",
+            "Il calcolo produce dose giornaliera, dose singola e ml per dose."
           ],
           "fonte": {
-            "tipo": "PLACEHOLDER",
-            "titolo": "Da definire",
-            "url": "",
-            "note": "Fonte da aggiungere dopo verifica."
+            "tipo": "RCP_AIFA",
+            "titolo": "Nurofen Febbre e Dolore Bambini 100 mg/5 ml sospensione orale - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/3510/farmaci/34102/stampati?ts=RCP",
+            "note": "Dose giornaliera 20-30 mg/kg suddivisa 3 volte al giorno; concentrazione 20 mg/ml."
           }
         }
       ],
@@ -119,7 +283,7 @@
           "unita_output_preferita": "compresse",
           "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
           "note_formato": [
-            "Il risultato finale può essere mostrato sia in mg sia in numero di compresse."
+            "Usare con la regola ibuprofene_nurofen_compresse_200mg."
           ]
         },
         {
@@ -131,9 +295,9 @@
           "unita_concentrazione": "mg/ml",
           "forma_somministrazione": "orale",
           "unita_output_preferita": "ml",
-          "conversione_placeholder": "ml = dose_totale_mg / concentrazione_mg_ml",
+          "conversione_placeholder": "ml = dose_singola_mg / concentrazione_mg_ml",
           "note_formato": [
-            "Il risultato finale può essere mostrato sia in mg sia in ml."
+            "100 mg/5 ml corrispondono a 20 mg/ml."
           ]
         }
       ]
@@ -145,32 +309,97 @@
       "categoria_icona": "efervescent_ico",
       "regole_dosaggio": [
         {
-          "id": "amoxicillina_base",
-          "titolo": "Regola da completare",
-          "indicazione": "Da definire",
-          "logica_calcolo": "WEIGHT_BASED",
-          "formula_placeholder": "dose_totale_mg = peso_kg * valore_dosaggio",
-          "valore_dosaggio": null,
-          "unita_dosaggio": "mg/kg",
+          "id": "amoxicillina_bambini_sotto_40kg",
+          "titolo": "Amoxicillina bambini <40 kg - dose giornaliera per peso",
+          "indicazione": "Infezioni batteriche secondo prescrizione medica",
+          "logica_calcolo": "WEIGHT_BASED_DAILY",
+          "formula_placeholder": "dose_giornaliera_mg = peso_kg * valore_dosaggio; dose_singola_mg = dose_giornaliera_mg / numero_somministrazioni",
+          "valore_dosaggio_min": 40.0,
+          "valore_dosaggio_max": 90.0,
+          "unita_dosaggio": "mg/kg/die",
           "frequenza_ore": null,
-          "numero_somministrazioni_max_giornaliere": null,
-          "input_richiesti": ["peso_kg"],
+          "numero_somministrazioni_max_giornaliere": 3,
+          "numero_somministrazioni_possibili": [2, 3],
+          "input_richiesti": ["peso_kg", "numero_somministrazioni"],
           "limiti": {
             "eta_min_anni": null,
             "eta_max_anni": null,
             "peso_min_kg": null,
+            "peso_max_kg": 40.0,
+            "dose_massima_mg": 3000.0
+          },
+          "alert": [
+            "Antibiotico: usare solo su prescrizione medica.",
+            "La dose dipende da infezione, gravità, età, peso e funzione renale.",
+            "Non superare 3 g al giorno secondo la fonte indicata.",
+            "La scelta tra 2 e 3 somministrazioni deve essere stabilita dal medico."
+          ],
+          "note": [
+            "Regola pediatrica per bambini con peso inferiore a 40 kg.",
+            "Il valore 40-90 mg/kg/die è un intervallo: l'app dovrebbe mostrare min e max, non scegliere autonomamente."
+          ],
+          "fonte": {
+            "tipo": "RCP_AIFA",
+            "titolo": "Amoxicillina sospensione orale - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/3582/farmaci/23097/stampati?ts=RCP",
+            "note": "Bambini <40 kg: 40-90 mg/kg/die in 2-3 somministrazioni, senza superare 3 g/die."
+          }
+        },
+        {
+          "id": "amoxicillina_adulti_e_bambini_oltre_40kg",
+          "titolo": "Amoxicillina adulti e bambini ≥40 kg - dose fissa/range",
+          "indicazione": "Infezioni batteriche secondo prescrizione medica",
+          "logica_calcolo": "FIXED_DOSE_RANGE",
+          "formula_placeholder": "dose_giornaliera_mg = dose_singola_mg * numero_somministrazioni",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "mg",
+          "frequenza_ore": null,
+          "numero_somministrazioni_max_giornaliere": 3,
+          "input_richiesti": ["peso_kg", "schema_prescritto"],
+          "schemi_posologici": [
+            {
+              "nome_schema": "250-500 mg tre volte al giorno",
+              "dose_singola_mg_min": 250,
+              "dose_singola_mg_max": 500,
+              "somministrazioni_giornaliere": 3,
+              "frequenza_ore": 8
+            },
+            {
+              "nome_schema": "750 mg-1 g due volte al giorno",
+              "dose_singola_mg_min": 750,
+              "dose_singola_mg_max": 1000,
+              "somministrazioni_giornaliere": 2,
+              "frequenza_ore": 12
+            },
+            {
+              "nome_schema": "750 mg-1 g tre volte al giorno per infezioni gravi",
+              "dose_singola_mg_min": 750,
+              "dose_singola_mg_max": 1000,
+              "somministrazioni_giornaliere": 3,
+              "frequenza_ore": 8
+            }
+          ],
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": 40.0,
             "peso_max_kg": null,
             "dose_massima_mg": null
           },
-          "alert": [],
+          "alert": [
+            "Antibiotico: usare solo su prescrizione medica.",
+            "La dose dipende dall'indicazione clinica e dalla gravità dell'infezione.",
+            "Controllare funzione renale e indicazioni del medico."
+          ],
           "note": [
-            "Regola non ancora compilata."
+            "Regola per adulti e bambini con peso pari o superiore a 40 kg.",
+            "Non è opportuno scegliere automaticamente lo schema: va selezionato lo schema prescritto."
           ],
           "fonte": {
-            "tipo": "PLACEHOLDER",
-            "titolo": "Da definire",
-            "url": "",
-            "note": "Fonte da aggiungere dopo verifica."
+            "tipo": "RCP_EMA_AIFA",
+            "titolo": "Amoxicillina - informazioni regolatorie/RCP",
+            "url": "https://www.ema.europa.eu/it/documents/referral/amoxil-article-30-referral-annex-iii_it.pdf",
+            "note": "Adulti e bambini ≥40 kg: schemi 250-500 mg tre volte/die o 750 mg-1 g ogni 12 ore; infezioni gravi 750 mg-1 g tre volte/die."
           }
         }
       ],
@@ -184,9 +413,10 @@
           "unita_concentrazione": "mg/compressa",
           "forma_somministrazione": "orale",
           "unita_output_preferita": "compresse",
-          "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
+          "conversione_placeholder": "numero_compresse = dose_singola_mg / concentrazione_mg_compressa",
           "note_formato": [
-            "Formato utile per mostrare la conversione in compresse."
+            "Formato utile per mostrare la conversione in compresse.",
+            "Da usare solo se coerente con lo schema prescritto."
           ]
         },
         {
@@ -198,9 +428,10 @@
           "unita_concentrazione": "mg/ml",
           "forma_somministrazione": "orale",
           "unita_output_preferita": "ml",
-          "conversione_placeholder": "ml = dose_totale_mg / concentrazione_mg_ml",
+          "conversione_placeholder": "ml = dose_singola_mg / concentrazione_mg_ml",
           "note_formato": [
-            "Formato utile per mostrare la conversione in ml."
+            "Concentrazione impostata a 50 mg/ml, equivalente a 250 mg/5 ml.",
+            "Verificare sempre la concentrazione del prodotto specifico."
           ]
         }
       ]
@@ -212,34 +443,110 @@
       "categoria_icona": "bug_ico",
       "regole_dosaggio": [
         {
-          "id": "ivermectina_base",
-          "titolo": "Regola base",
-          "indicazione": "Da definire",
-          "logica_calcolo": "WEIGHT_BASED",
-          "formula_placeholder": "dose_totale_mcg = peso_kg * valore_dosaggio; dose_totale_mg = dose_totale_mcg / 1000",
-          "valore_dosaggio": null,
+          "id": "ivermectina_scabbia_200mcg_kg",
+          "titolo": "Ivermectina orale - scabbia sarcoptica umana",
+          "indicazione": "Scabbia sarcoptica umana",
+          "logica_calcolo": "WEIGHT_BASED_SINGLE_DOSE",
+          "formula_placeholder": "dose_totale_mcg = peso_kg * 200; dose_totale_mg = dose_totale_mcg / 1000; numero_compresse_teorico = dose_totale_mg / 3",
+          "valore_dosaggio": 200.0,
           "unita_dosaggio": "mcg/kg",
           "frequenza_ore": null,
-          "numero_somministrazioni_max_giornaliere": null,
+          "numero_somministrazioni_max_giornaliere": 1,
           "input_richiesti": ["peso_kg"],
           "limiti": {
             "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": 15.0,
+            "peso_max_kg": null,
+            "dose_massima_mg": null
+          },
+          "tabella_compresse": [
+            {
+              "peso_min_kg": 15,
+              "peso_max_kg": 24,
+              "compresse_3mg": 1,
+              "dose_totale_mg": 3
+            },
+            {
+              "peso_min_kg": 25,
+              "peso_max_kg": 35,
+              "compresse_3mg": 2,
+              "dose_totale_mg": 6
+            },
+            {
+              "peso_min_kg": 36,
+              "peso_max_kg": 50,
+              "compresse_3mg": 3,
+              "dose_totale_mg": 9
+            },
+            {
+              "peso_min_kg": 51,
+              "peso_max_kg": 65,
+              "compresse_3mg": 4,
+              "dose_totale_mg": 12
+            },
+            {
+              "peso_min_kg": 66,
+              "peso_max_kg": 79,
+              "compresse_3mg": 5,
+              "dose_totale_mg": 15
+            },
+            {
+              "peso_min_kg": 80,
+              "peso_max_kg": null,
+              "compresse_3mg": 6,
+              "dose_totale_mg": 18
+            }
+          ],
+          "alert": [
+            "Usare solo quando il medico ha diagnosticato o sospetta la scabbia.",
+            "Dose singola orale da 200 microgrammi/kg.",
+            "La dose teorica in mg deve essere convertita in compresse da 3 mg secondo la tabella ufficiale.",
+            "Non usare sotto i 15 kg secondo la tabella posologica indicata."
+          ],
+          "note": [
+            "Distinguere dose teorica calcolata e numero pratico di compresse.",
+            "200 mcg/kg = 0,2 mg/kg."
+          ],
+          "fonte": {
+            "tipo": "RCP_AIFA",
+            "titolo": "Ivermectina compresse - RCP/FI AIFA",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/3295/farmaci/48540/stampati?ts=RCP",
+            "note": "Scabbia: singola somministrazione orale da 200 microgrammi/kg; tabella in compresse da 3 mg."
+          }
+        },
+        {
+          "id": "ivermectina_crema_rosacea",
+          "titolo": "Ivermectina crema 10 mg/g - uso topico",
+          "indicazione": "Lesioni infiammatorie della rosacea",
+          "logica_calcolo": "TOPICAL_FIXED_APPLICATION",
+          "formula_placeholder": "applicare_quantita_topica_secondo_RCP",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "applicazione",
+          "frequenza_ore": 24,
+          "numero_somministrazioni_max_giornaliere": 1,
+          "input_richiesti": ["eta_anni"],
+          "limiti": {
+            "eta_min_anni": 18,
             "eta_max_anni": null,
             "peso_min_kg": null,
             "peso_max_kg": null,
             "dose_massima_mg": null
           },
           "alert": [
-            "Controllare conversione da microgrammi a milligrammi."
+            "Uso topico: non calcolare in mg/kg.",
+            "Sicurezza ed efficacia sotto i 18 anni non stabilite.",
+            "Applicare secondo indicazione medica/RCP."
           ],
           "note": [
-            "Distinguere tra dose teorica e formato realmente disponibile."
+            "Crema 10 mg/g.",
+            "Dose pratico: applicazione cutanea, non conversione in mg."
           ],
           "fonte": {
-            "tipo": "PLACEHOLDER",
-            "titolo": "Da definire",
-            "url": "",
-            "note": "Fonte da aggiungere dopo verifica."
+            "tipo": "RCP_AIFA",
+            "titolo": "Ivermectina crema 10 mg/g - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/7073/farmaci/43463/stampati?ts=RCP",
+            "note": "Crema 10 mg/g; una applicazione al giorno; uso in adulti."
           }
         }
       ],
@@ -255,7 +562,7 @@
           "unita_output_preferita": "compresse",
           "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
           "note_formato": [
-            "Formato utile per il calcolo in numero di compresse."
+            "Per la pratica usare la tabella peso/numero compresse."
           ]
         },
         {
@@ -263,13 +570,14 @@
           "nome": "Ivermectina",
           "formato": "Crema",
           "icona": "cream_ico",
-          "concentrazione": null,
-          "unita_concentrazione": "percentuale_da_definire",
+          "concentrazione": 10.0,
+          "unita_concentrazione": "mg/g",
           "forma_somministrazione": "topica",
           "unita_output_preferita": "applicazione",
-          "conversione_placeholder": "quantita_topica_da_definire_in_base_al_formato",
+          "conversione_placeholder": "applicazione_topica = 1 volta al giorno secondo RCP",
           "note_formato": [
-            "Formato alternativo da usare solo se coerente con la regola scelta."
+            "Non usare con regola mg/kg.",
+            "Uso topico."
           ]
         }
       ]
@@ -281,32 +589,115 @@
       "categoria_icona": "flower_ico",
       "regole_dosaggio": [
         {
-          "id": "cetirizina_base",
-          "titolo": "Regola da completare",
-          "indicazione": "Allergie",
-          "logica_calcolo": "FIXED_DOSE",
-          "formula_placeholder": "dose_totale = valore_dosaggio",
+          "id": "cetirizina_compresse_fasce_eta",
+          "titolo": "Cetirizina compresse 10 mg - dosaggio per età",
+          "indicazione": "Rinite allergica e orticaria",
+          "logica_calcolo": "AGE_BANDS_FIXED_DOSE",
+          "formula_placeholder": "dose_totale_mg = dose_fascia_mg",
           "valore_dosaggio": null,
           "unita_dosaggio": "mg",
           "frequenza_ore": null,
           "numero_somministrazioni_max_giornaliere": null,
-          "input_richiesti": [],
+          "input_richiesti": ["eta_anni"],
+          "fasce_eta": [
+            {
+              "eta_min_anni": 6,
+              "eta_max_anni": 12,
+              "dose_singola_mg": 5,
+              "somministrazioni_giornaliere": 2,
+              "frequenza_ore": 12,
+              "dose_giornaliera_mg": 10
+            },
+            {
+              "eta_min_anni": 12,
+              "eta_max_anni": null,
+              "dose_singola_mg": 10,
+              "somministrazioni_giornaliere": 1,
+              "frequenza_ore": 24,
+              "dose_giornaliera_mg": 10
+            }
+          ],
           "limiti": {
-            "eta_min_anni": null,
+            "eta_min_anni": 6,
             "eta_max_anni": null,
             "peso_min_kg": null,
             "peso_max_kg": null,
-            "dose_massima_mg": null
+            "dose_massima_mg": 10.0
           },
-          "alert": [],
+          "alert": [
+            "Le compresse sono indicate da 6 anni in su.",
+            "Nei bambini 6-12 anni: mezza compressa due volte al giorno.",
+            "Negli adulti e ragazzi oltre 12 anni: 10 mg una volta al giorno."
+          ],
           "note": [
-            "Questa regola può essere cambiata in base alla fonte scelta."
+            "Dose fissa per età, non per peso."
           ],
           "fonte": {
-            "tipo": "PLACEHOLDER",
-            "titolo": "Da definire",
-            "url": "",
-            "note": "Fonte da aggiungere dopo verifica."
+            "tipo": "RCP_AIFA",
+            "titolo": "Cetirizina 10 mg compresse - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/2753/farmaci/36910/stampati?ts=RCP",
+            "note": "Bambini 6-12 anni: 5 mg due volte/die; adulti e ragazzi >12 anni: 10 mg una volta/die."
+          }
+        },
+        {
+          "id": "cetirizina_soluzione_1mg_ml_fasce_eta",
+          "titolo": "Cetirizina soluzione orale 1 mg/ml - dosaggio per età",
+          "indicazione": "Rinite allergica e orticaria",
+          "logica_calcolo": "AGE_BANDS_FIXED_DOSE",
+          "formula_placeholder": "ml = dose_totale_mg / 1",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "mg",
+          "frequenza_ore": null,
+          "numero_somministrazioni_max_giornaliere": null,
+          "input_richiesti": ["eta_anni"],
+          "fasce_eta": [
+            {
+              "eta_min_anni": 2,
+              "eta_max_anni": 6,
+              "dose_singola_mg": 2.5,
+              "dose_singola_ml": 2.5,
+              "somministrazioni_giornaliere": 2,
+              "frequenza_ore": 12,
+              "dose_giornaliera_mg": 5
+            },
+            {
+              "eta_min_anni": 6,
+              "eta_max_anni": 12,
+              "dose_singola_mg": 5,
+              "dose_singola_ml": 5,
+              "somministrazioni_giornaliere": 2,
+              "frequenza_ore": 12,
+              "dose_giornaliera_mg": 10
+            },
+            {
+              "eta_min_anni": 12,
+              "eta_max_anni": null,
+              "dose_singola_mg": 10,
+              "dose_singola_ml": 10,
+              "somministrazioni_giornaliere": 1,
+              "frequenza_ore": 24,
+              "dose_giornaliera_mg": 10
+            }
+          ],
+          "limiti": {
+            "eta_min_anni": 2,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": 10.0
+          },
+          "alert": [
+            "Soluzione orale utilizzabile da 2 anni secondo la posologia riportata.",
+            "Con concentrazione 1 mg/ml, i mg corrispondono direttamente ai ml."
+          ],
+          "note": [
+            "Nel tuo JSON puoi chiamarlo sciroppo, ma tecnicamente molte fonti AIFA parlano di soluzione orale."
+          ],
+          "fonte": {
+            "tipo": "RCP_AIFA",
+            "titolo": "Cetirizina soluzione orale/gocce - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/813/farmaci/37318/stampati?ts=RCP",
+            "note": "Bambini 2-6 anni: 2,5 mg due volte/die; 6-12 anni: 5 mg due volte/die; adulti/ragazzi: 10 mg/die."
           }
         }
       ],
@@ -322,13 +713,13 @@
           "unita_output_preferita": "compresse",
           "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
           "note_formato": [
-            "Formato utile per il calcolo in compresse."
+            "Nei bambini 6-12 anni la dose da 5 mg corrisponde a mezza compressa."
           ]
         },
         {
           "id": "cetirizina_sciroppo",
           "nome": "Cetirizina",
-          "formato": "Sciroppo",
+          "formato": "Soluzione orale",
           "icona": "syringe_ico",
           "concentrazione": 1.0,
           "unita_concentrazione": "mg/ml",
@@ -336,7 +727,7 @@
           "unita_output_preferita": "ml",
           "conversione_placeholder": "ml = dose_totale_mg / concentrazione_mg_ml",
           "note_formato": [
-            "Formato utile per il calcolo in ml."
+            "Concentrazione 1 mg/ml: 2,5 mg = 2,5 ml; 5 mg = 5 ml; 10 mg = 10 ml."
           ]
         }
       ]
@@ -348,15 +739,88 @@
       "categoria_icona": "virus_ico",
       "regole_dosaggio": [
         {
-          "id": "aciclovir_base",
-          "titolo": "Regola da completare",
-          "indicazione": "Da definire",
+          "id": "aciclovir_herpes_simplex_orale",
+          "titolo": "Aciclovir orale - Herpes simplex",
+          "indicazione": "Infezioni da Herpes simplex",
           "logica_calcolo": "FIXED_DOSE",
-          "formula_placeholder": "dose_totale = valore_dosaggio",
-          "valore_dosaggio": null,
+          "formula_placeholder": "dose_giornaliera_mg = dose_singola_mg * somministrazioni_giornaliere",
+          "valore_dosaggio": 200.0,
           "unita_dosaggio": "mg",
-          "frequenza_ore": null,
-          "numero_somministrazioni_max_giornaliere": null,
+          "frequenza_ore": 4,
+          "numero_somministrazioni_max_giornaliere": 5,
+          "input_richiesti": ["eta_anni"],
+          "dose_singola_mg": 200,
+          "somministrazioni_giornaliere": 5,
+          "durata_giorni_standard": 5,
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": null
+          },
+          "alert": [
+            "Farmaco antivirale: usare secondo indicazione medica.",
+            "Schema tipico: 200 mg 5 volte al giorno, omettendo la dose notturna.",
+            "Nei bambini sotto i 2 anni alcune fonti prevedono metà dose: gestire come caso separato se necessario.",
+            "Adattare in caso di insufficienza renale secondo prescrizione."
+          ],
+          "note": [
+            "Con compresse da 400 mg, 200 mg corrispondono a mezza compressa: potrebbe non essere pratico o consigliabile senza indicazione specifica."
+          ],
+          "fonte": {
+            "tipo": "RCP_AIFA",
+            "titolo": "Aciclovir compresse - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/3018/farmaci/34583/stampati?ts=RCP",
+            "note": "Herpes simplex: 200 mg 5 volte/die a intervalli di circa 4 ore, omettendo la dose notturna."
+          }
+        },
+        {
+          "id": "aciclovir_varicella_bambini",
+          "titolo": "Aciclovir orale - Varicella bambini",
+          "indicazione": "Varicella",
+          "logica_calcolo": "WEIGHT_BASED_MULTIPLE_DAILY",
+          "formula_placeholder": "dose_singola_mg = peso_kg * 20; se dose_singola_mg > 800 allora dose_singola_mg = 800; dose_giornaliera_mg = dose_singola_mg * 4",
+          "valore_dosaggio": 20.0,
+          "unita_dosaggio": "mg/kg/dose",
+          "frequenza_ore": 6,
+          "numero_somministrazioni_max_giornaliere": 4,
+          "input_richiesti": ["peso_kg"],
+          "dose_massima_per_somministrazione_mg": 800.0,
+          "durata_giorni_standard": 5,
+          "limiti": {
+            "eta_min_anni": null,
+            "eta_max_anni": null,
+            "peso_min_kg": null,
+            "peso_max_kg": null,
+            "dose_massima_mg": 800.0
+          },
+          "alert": [
+            "Farmaco antivirale: usare secondo indicazione medica.",
+            "Dose pediatrica più precisa: 20 mg/kg 4 volte al giorno, senza superare 800 mg per dose.",
+            "Adattare in caso di insufficienza renale secondo prescrizione."
+          ],
+          "note": [
+            "Questa regola è più adatta al calcolo pediatrico rispetto alle sole fasce d'età.",
+            "La dose massima per singola somministrazione è 800 mg."
+          ],
+          "fonte": {
+            "tipo": "RCP_AIFA",
+            "titolo": "Aciclovir - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/2753/farmaci/36110/stampati?ts=RCP",
+            "note": "Varicella bambini: 20 mg/kg 4 volte/die, senza superare 800 mg per dose, per 5 giorni."
+          }
+        },
+        {
+          "id": "aciclovir_crema_5_percento",
+          "titolo": "Aciclovir crema 5% - uso topico",
+          "indicazione": "Herpes labiale o cutaneo",
+          "logica_calcolo": "TOPICAL_FIXED_APPLICATION",
+          "formula_placeholder": "applicare_sulle_lesioni_5_volte_al_giorno",
+          "valore_dosaggio": null,
+          "unita_dosaggio": "applicazione",
+          "frequenza_ore": 4,
+          "numero_somministrazioni_max_giornaliere": 5,
           "input_richiesti": [],
           "limiti": {
             "eta_min_anni": null,
@@ -365,15 +829,20 @@
             "peso_max_kg": null,
             "dose_massima_mg": null
           },
-          "alert": [],
+          "alert": [
+            "Uso topico: non calcolare in mg/kg.",
+            "Applicare sulle lesioni o sulle zone dove stanno sviluppandosi.",
+            "Non destinato a uso oftalmico."
+          ],
           "note": [
-            "La regola dipenderà dal caso d'uso scelto nel dataset."
+            "Crema 5% = 50 mg/g.",
+            "Applicazione 5 volte al giorno a intervalli di circa 4 ore."
           ],
           "fonte": {
-            "tipo": "PLACEHOLDER",
-            "titolo": "Da definire",
-            "url": "",
-            "note": "Fonte da aggiungere dopo verifica."
+            "tipo": "RCP_AIFA",
+            "titolo": "Aciclovir crema - RCP",
+            "url": "https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/4852/farmaci/31846/stampati?ts=RCP",
+            "note": "Aciclovir crema: applicare 5 volte al giorno a intervalli di circa 4 ore."
           }
         }
       ],
@@ -387,9 +856,10 @@
           "unita_concentrazione": "mg/compressa",
           "forma_somministrazione": "orale",
           "unita_output_preferita": "compresse",
-          "conversione_placeholder": "numero_compresse = dose_totale_mg / concentrazione_mg_compressa",
+          "conversione_placeholder": "numero_compresse = dose_singola_mg / concentrazione_mg_compressa",
           "note_formato": [
-            "Formato utile per il calcolo in compresse."
+            "Con compresse da 400 mg, alcune dosi da 200 mg corrispondono a mezza compressa.",
+            "Verificare il formato reale disponibile: esistono anche compresse da 200 mg o 800 mg a seconda del prodotto."
           ]
         },
         {
@@ -397,13 +867,15 @@
           "nome": "Aciclovir",
           "formato": "Crema",
           "icona": "cream_ico",
-          "concentrazione": null,
-          "unita_concentrazione": "percentuale_da_definire",
+          "concentrazione": 50.0,
+          "unita_concentrazione": "mg/g",
+          "percentuale": 5.0,
           "forma_somministrazione": "topica",
           "unita_output_preferita": "applicazione",
-          "conversione_placeholder": "quantita_topica_da_definire_in_base_al_formato",
+          "conversione_placeholder": "applicazione_topica = 5 volte al giorno secondo RCP",
           "note_formato": [
-            "Formato alternativo da usare con regola specifica."
+            "Crema 5%, equivalente a 50 mg/g.",
+            "Non usare con regole orali in mg/kg."
           ]
         }
       ]

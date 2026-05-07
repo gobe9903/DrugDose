@@ -1,5 +1,7 @@
 package com.example.drugdose
 
+import com.google.gson.annotations.SerializedName
+
 data class DrugData(
     val principi_attivi: List<PrincipioAttivo>
 )
@@ -19,15 +21,30 @@ data class RegolaDosaggio(
     val indicazione: String,
     val logica_calcolo: String,
     val formula_placeholder: String,
-    val valore_dosaggio: Double?,
+    val valore_dosaggio: Double? = null,
+    val valore_dosaggio_min: Double? = null,
+    val valore_dosaggio_max: Double? = null,
     val unita_dosaggio: String,
-    val frequenza_ore: Int?,
-    val numero_somministrazioni_max_giornaliere: Int?,
+    val frequenza_ore: Int? = null,
+    val frequenza_ore_max: Int? = null,
+    val numero_somministrazioni_max_giornaliere: Int? = null,
+    val numero_somministrazioni_possibili: List<Int>? = null,
     val input_richiesti: List<String>,
     val limiti: Limiti,
     val alert: List<String>,
     val note: List<String>,
-    val fonte: Fonte
+    val fonte: Fonte,
+    
+    // Campi per logiche avanzate (fasce, tabelle, ecc.)
+    // Usiamo Map per flessibilità nelle diverse strutture di fasce
+    val fasce_peso: List<Map<String, Any>>? = null,
+    val fasce_eta: List<Map<String, Any>>? = null,
+    val schemi_posologici: List<Map<String, Any>>? = null,
+    val tabella_compresse: List<Map<String, Any>>? = null,
+    val dose_singola: Map<String, Any>? = null,
+    val mg_per_goccia: Double? = null,
+    val dose_massima_per_somministrazione_mg: Double? = null,
+    val durata_giorni_standard: Int? = null
 )
 
 data class Limiti(
@@ -55,5 +72,7 @@ data class FarmacoCommerciale(
     val forma_somministrazione: String,
     val unita_output_preferita: String,
     val conversione_placeholder: String,
-    val note_formato: List<String>
+    val note_formato: List<String>,
+    val mg_per_goccia: Double? = null,
+    val percentuale: Double? = null
 )
